@@ -56,6 +56,7 @@ class QLearningTable(RL):
         q_predict = self.q_table.loc[s, a]
         if s_ != 'terminal':
             q_target = r + self.gamma * self.q_table.loc[s_, :].max()  # next state is not terminal
+            print('\n', self.q_table)
         else:
             q_target = r  # next state is terminal
         self.q_table.loc[s, a] += self.lr * (q_target - q_predict)  # update
@@ -72,6 +73,7 @@ class SarsaTable(RL):
         q_predict = self.q_table.loc[s, a]
         if s_ != 'terminal':
             q_target = r + self.gamma * self.q_table.loc[s_, a_]  # next state is not terminal
+            print('\n', self.q_table)
         else:
             q_target = r  # next state is terminal
         self.q_table.loc[s, a] += self.lr * (q_target - q_predict)  # update

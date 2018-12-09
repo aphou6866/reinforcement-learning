@@ -73,6 +73,7 @@ class SarsaLambdaTable(RL):
         q_predict = self.q_table.loc[s, a]
         if s_ != 'terminal':
             q_target = r + self.gamma * self.q_table.loc[s_, a_]  # next state is not terminal
+            print('\n', self.q_table)
         else:
             q_target = r  # next state is terminal
         error = q_target - q_predict
